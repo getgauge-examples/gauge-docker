@@ -1,5 +1,7 @@
 FROM node
 
+ENV TAIKO_BROWSER_ARGS --no-sandbox,--start-maximized,--disable-dev-shm-usage
+
 RUN apt-get update && \
     apt-get -y install xvfb gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 \
       libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 \

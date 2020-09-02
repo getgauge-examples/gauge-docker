@@ -10,6 +10,7 @@ RUN apt-get update && \
 
 
 
-RUN npm install -g @getgauge/cli --unsafe-perm && gauge install js && gauge install html-report &&  \
+RUN npm install -g @getgauge/cli@1.1.1 --unsafe-perm && \
+    gauge install js && gauge install html-report &&  \
     gauge install screenshot
 

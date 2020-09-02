@@ -22,11 +22,11 @@ jobs:
 
       - name: Tag image
         run: |
-          docker tag gauge-taiko:latest docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:0.0.1-$GITHUB_RUN_NUMBER
+          docker tag gauge-taiko:latest docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:1.1.1-$GITHUB_RUN_NUMBER
           docker tag gauge-taiko:latest docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:latest
           docker images -a
 
       - name: Push image
         run: |
-          docker push docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:0.0.1-$GITHUB_RUN_NUMBER
+          docker push docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:1.1.1-$GITHUB_RUN_NUMBER
           docker push docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:latest

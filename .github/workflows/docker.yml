@@ -2,17 +2,19 @@ name: Build
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: '${{ secrets.GAUGEBOT_GITHUB_TOKEN }}'
       CI: true
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Log into GitHub Container Registry
+        run: echo "${{ secrets.GAUGEBOT_GITHUB_TOKEN }}" | docker login https://docker.pkg.github.com -u gaugebot --password-stdin
 
       - name: Build artifacts
         run: |
@@ -23,3 +25,8 @@ jobs:
           docker tag gauge-taiko:latest docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:$GITHUB_RUN_NUMBER
           docker tag gauge-taiko:latest docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:latest
           docker images -a
+
+      - name: Push image
+        run: |
+          docker push docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:$GITHUB_RUN_NUMBER
+          docker push docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:latest

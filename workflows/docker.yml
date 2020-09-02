@@ -2,13 +2,13 @@ name: Build
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: '${{ secrets.GAUGEBOT_GITHUB_TOKEN }}'
+      # GITHUB_TOKEN: '${{ secrets.GAUGEBOT_GITHUB_TOKEN }}'
       CI: true
 
     steps:

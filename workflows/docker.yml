@@ -21,3 +21,5 @@ jobs:
       - name: Tag image
         run: |
           docker tag gauge-taiko:latest docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:$GITHUB_RUN_NUMBER
+          docker tag gauge-taiko:latest docker.pkg.github.com/getgauge-examples/gauge-docker/gauge-taiko:latest
+          docker images -a
